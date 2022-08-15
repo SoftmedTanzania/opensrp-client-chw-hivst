@@ -59,11 +59,12 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     protected View view_positive_date_row;
     protected RelativeLayout rlLastVisit;
     protected RelativeLayout rlUpcomingServices;
+    protected RelativeLayout rlSelfTestingHistory;
     protected RelativeLayout rlFamilyServicesDue;
     protected RelativeLayout visitStatus;
     protected ImageView imageViewCross;
     protected TextView textViewUndo;
-    protected RelativeLayout rlHivstPositiveDate;
+    protected RelativeLayout rlSelfTestingResults;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
@@ -116,9 +117,10 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         tvFamilyStatus = findViewById(R.id.textview_family_has);
         textview_positive_date = findViewById(R.id.textview_positive_date);
         rlLastVisit = findViewById(R.id.rlLastVisit);
-        rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
-        rlHivstPositiveDate = findViewById(R.id.rlHivstPositiveDate);
+        rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
+        rlSelfTestingHistory = findViewById(R.id.rlSelfTestingHistory);
+        rlSelfTestingResults = findViewById(R.id.rlSelfTestingResults);
         textViewVisitDone = findViewById(R.id.textview_visit_done);
         visitStatus = findViewById(R.id.record_visit_not_done_bar);
         visitDone = findViewById(R.id.visit_done_bar);
@@ -136,7 +138,8 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         rlLastVisit.setOnClickListener(this);
         rlUpcomingServices.setOnClickListener(this);
         rlFamilyServicesDue.setOnClickListener(this);
-        rlHivstPositiveDate.setOnClickListener(this);
+        rlSelfTestingHistory.setOnClickListener(this);
+        rlSelfTestingResults.setOnClickListener(this);
         textViewRecordHivst.setOnClickListener(this);
         textViewRecordAnc.setOnClickListener(this);
         textViewUndo.setOnClickListener(this);

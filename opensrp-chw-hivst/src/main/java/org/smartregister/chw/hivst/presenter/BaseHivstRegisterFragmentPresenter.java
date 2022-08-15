@@ -39,7 +39,7 @@ public class BaseHivstRegisterFragmentPresenter implements HivstRegisterFragment
 
     @Override
     public String getDefaultSortQuery() {
-        return Constants.TABLES.HIVST_CONFIRMATION + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ";
+        return Constants.TABLES.HIVST_REGISTER + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ";
     }
 
     @Override
@@ -61,7 +61,7 @@ public class BaseHivstRegisterFragmentPresenter implements HivstRegisterFragment
 
     @Override
     public void initializeQueries(String mainCondition) {
-        String tableName = Constants.TABLES.HIVST_CONFIRMATION;
+        String tableName = Constants.TABLES.HIVST_REGISTER;
         mainCondition = trim(getMainCondition()).equals("") ? mainCondition : getMainCondition();
         String countSelect = model.countSelect(tableName, mainCondition);
         String mainSelect = model.mainSelect(tableName, mainCondition);
@@ -97,7 +97,7 @@ public class BaseHivstRegisterFragmentPresenter implements HivstRegisterFragment
 
     @Override
     public String getMainTable() {
-        return Constants.TABLES.HIVST_CONFIRMATION;
+        return Constants.TABLES.HIVST_REGISTER;
     }
 
     @Override

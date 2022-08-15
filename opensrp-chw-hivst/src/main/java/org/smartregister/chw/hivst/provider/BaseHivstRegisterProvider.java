@@ -59,14 +59,9 @@ public class BaseHivstRegisterProvider implements RecyclerViewProvider<BaseHivst
     }
 
     private String updateMemberGender(CommonPersonObjectClient commonPersonObjectClient) {
-        if ("0".equals(Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.IS_ANC_CLOSED, false))) {
-            return context.getResources().getString(R.string.anc_string);
-        } else if ("0".equals(Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.IS_PNC_CLOSED, false))) {
-            return context.getResources().getString(R.string.pnc_string);
-        } else {
-            String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.GENDER, true);
-            return HivstUtil.getGenderTranslated(context, gender);
-        }
+        String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.GENDER, true);
+        return HivstUtil.getGenderTranslated(context, gender);
+
     }
 
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {

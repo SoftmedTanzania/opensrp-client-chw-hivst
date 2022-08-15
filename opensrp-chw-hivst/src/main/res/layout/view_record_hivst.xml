@@ -150,7 +150,7 @@
             android:paddingTop="10dp"
             android:paddingRight="30dp"
             android:paddingBottom="10dp"
-            android:text="@string/record_hivst"
+            android:text="@string/provide_self_testing_kits"
             android:textColor="@color/white" />
 
     </LinearLayout>

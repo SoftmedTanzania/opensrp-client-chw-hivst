@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -30,6 +31,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/notification_and_referral_row"
             android:background="@color/light_grey"
+            tools:visibility="visible"
             android:visibility="gone" />
 
         <RelativeLayout
@@ -76,6 +78,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/rlLastVisit"
             android:background="@color/light_grey"
+            tools:visibility="visible"
             android:visibility="gone" />
 
         <RelativeLayout
@@ -134,15 +137,17 @@
             android:layout_height="1px"
             android:layout_below="@+id/rlUpcomingServices"
             android:background="@color/light_grey"
+            tools:visibility="visible"
             android:visibility="gone" />
 
         <RelativeLayout
-            android:id="@+id/rlHivstPositiveDate"
+            android:id="@+id/rlSelfTestingResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view_positive_date_row"
             android:background="@drawable/list_item_background_selctor"
             android:padding="20dp"
+            tools:visibility="visible"
             android:visibility="gone">
 
             <ImageView
@@ -151,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/childrow_upcoming" />
+                android:src="@drawable/ic_hiv" />
 
             <ImageView
                 android:id="@+id/iv_positive_date_arrow"
@@ -170,7 +175,7 @@
                 android:layout_toLeftOf="@+id/iv_positive_date_arrow"
                 android:layout_toRightOf="@+id/cancel_image"
                 android:gravity="left|center_horizontal"
-                android:text="Malaria positive 12 Jan 2018"
+                android:text="@string/self_testing_results_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/black" />
 
@@ -182,7 +187,7 @@
                 android:layout_below="@+id/textview_positive_date"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/cancel_image"
-                android:text="@string/view_malaria_test_result"
+                android:text="@string/self_testing_client_history_subtitle"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/darker_gray" />
 
@@ -192,15 +197,71 @@
             android:id="@+id/view_most_due_overdue_row"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/rlHivstPositiveDate"
+            android:layout_below="@+id/rlSelfTestingResults"
             android:background="@color/light_grey"
             android:visibility="visible" />
+        <RelativeLayout
+            android:id="@+id/rlSelfTestingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_most_due_overdue_row"
+            android:background="@drawable/list_item_background_selctor"
+            android:padding="20dp"
+            tools:visibility="visible"
+            android:visibility="gone">
 
+            <ImageView
+                android:id="@+id/family_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_hiv" />
+
+            <ImageView
+                android:id="@+id/iv_family_services_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/row_goto" />
+
+            <org.smartregister.view.customcontrols.CustomFontTextView
+                android:id="@+id/textview_family_has"
+                style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/family_image"
+                android:gravity="center_horizontal"
+                android:text="@string/self_testing_client_history_title"
+                android:textColor="@android:color/black" />
+
+            <org.smartregister.view.customcontrols.CustomFontTextView
+                android:id="@+id/text_view_family_profile"
+                style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_family_has"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/family_image"
+                android:text="@string/self_testing_client_history_subtitle"
+                android:textColor="@android:color/darker_gray" />
+
+        </RelativeLayout>
+        <View
+            android:id="@+id/view_self_testing_row"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/rlSelfTestingHistory"
+            android:background="@color/light_grey"
+            tools:visibility="visible"
+            android:visibility="gone" />
         <RelativeLayout
             android:id="@+id/rlFamilyServicesDue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view_most_due_overdue_row"
+            android:layout_below="@+id/view_self_testing_row"
             android:background="@drawable/list_item_background_selctor"
             android:padding="20dp"
             android:visibility="gone">
@@ -251,6 +312,7 @@
             android:layout_height="1px"
             android:layout_below="@+id/rlFamilyServicesDue"
             android:background="@color/light_grey"
+            tools:visibility="visible"
             android:visibility="gone" />
 
     </RelativeLayout>
