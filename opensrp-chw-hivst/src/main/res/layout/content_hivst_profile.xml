@@ -192,7 +192,7 @@
             android:id="@+id/view_most_due_overdue_row"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/rlMalariaPositiveDate"
+            android:layout_below="@+id/rlHivstPositiveDate"
             android:background="@color/light_grey"
             android:visibility="visible" />
 

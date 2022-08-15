@@ -29,7 +29,7 @@
     <string name="vaccine_service_due"><![CDATA[%1$s <font color=#000000>due (%2$s)</font></b>]]></string>
     <string name="call_hivst_client">HIVST Client</string>
     <string name="head_of_family">Head of family</string>
-    <string name="malaria_client">Malaria Client</string>
+    <string name="hivst_client">HIVST Client</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="copied_phone_number">PhoneNumber copied to clipboard</string>
     <string name="call">Call</string>
