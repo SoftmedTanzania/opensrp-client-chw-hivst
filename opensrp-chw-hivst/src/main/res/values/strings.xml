@@ -51,5 +51,6 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="hivst">HIVST</string>
+    <stting name="provide_self_testing_kits">Provide Self Testing Kits</stting>
 
 </resources>
