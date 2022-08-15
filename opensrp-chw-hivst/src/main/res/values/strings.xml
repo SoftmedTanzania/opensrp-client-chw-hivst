@@ -52,5 +52,9 @@
     <string name="female">Female</string>
     <string name="hivst">HIVST</string>
     <stting name="provide_self_testing_kits">Provide Self Testing Kits</stting>
+    <string name="self_testing_results_title">Self Testing Results</string>
+    <string name="self_testing_results_subtitle">Record Self Testing Results</string>
+    <string name="self_testing_client_history_title">Client\'s Self Testing History</string>
+    <string name="self_testing_client_history_subtitle">View Self Testing History</string>
 
 </resources>
