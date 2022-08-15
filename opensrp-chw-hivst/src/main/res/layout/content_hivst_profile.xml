@@ -15,8 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:visibility="gone"
-            tools:visibility="visible">
+            android:visibility="gone">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/notification_and_referral_recycler_view"
@@ -42,7 +41,6 @@
             android:layout_below="@id/view_notification_and_referral_row"
             android:background="@drawable/list_item_background_selctor"
             android:padding="20dp"
-            tools:visibility="visible"
             android:visibility="gone">
 
             <ImageView
@@ -90,7 +88,6 @@
             android:layout_below="@+id/view_last_visit_row"
             android:background="@drawable/list_item_background_selctor"
             android:padding="20dp"
-            tools:visibility="visible"
             android:visibility="gone">
 
             <ImageView
@@ -267,7 +264,6 @@
             android:layout_below="@+id/view_self_testing_row"
             android:background="@drawable/list_item_background_selctor"
             android:padding="20dp"
-            tools:visibility="visible"
             android:visibility="gone">
 
             <ImageView
