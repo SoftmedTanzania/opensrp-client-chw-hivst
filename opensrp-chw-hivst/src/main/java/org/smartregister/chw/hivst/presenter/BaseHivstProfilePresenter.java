@@ -1,7 +1,7 @@
 package org.smartregister.chw.hivst.presenter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import org.smartregister.chw.hivst.contract.HivstProfileContract;
 import org.smartregister.chw.hivst.domain.MemberObject;

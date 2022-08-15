@@ -1,6 +1,6 @@
 package org.smartregister.chw.hivst.interactor;
 
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 
 import org.smartregister.chw.hivst.contract.HivstProfileContract;
 import org.smartregister.chw.hivst.domain.MemberObject;
