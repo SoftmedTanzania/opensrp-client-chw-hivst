@@ -13,18 +13,21 @@ public interface Constants {
     }
 
     interface EVENT_TYPE {
-        String HIVST_CONFIRMATION = "Hivst Confirmation";
-        String HIVST_FOLLOW_UP_VISIT = "Hivst Follow-up Visit";
+        String HIVST_REGISTRATION = "Self Testing Registration";
+        String HIVST_ISSUE_KITS = "Self Testing Kits Issue";
+        String HIVST_RESULTS = "Self Testing Results";
     }
 
     interface FORMS {
-        String HIVST_REGISTRATION = "hivst_confirmation";
+        String HIVST_REGISTRATION = "hivst_registration";
+        String HIVST_ISSUE_KITS = "hivs_issue_kits";
+        String HIVST_RECORD_RESULTS = "hivs_results";
         String HIVST_FOLLOW_UP_VISIT = "hivst_followup_visit";
     }
 
     interface TABLES {
-        String HIVST_CONFIRMATION = "ec_hivst_confirmation";
-        String HIVST_FOLLOW_UP = "ec_hivst_follow_up_visit";
+        String HIVST_REGISTER = "ec_hivst_register";
+        String HIVST_FOLLOWUP = "ec_hivst_followup";
     }
 
     interface ACTIVITY_PAYLOAD {
