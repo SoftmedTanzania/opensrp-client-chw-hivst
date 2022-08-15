@@ -27,7 +27,7 @@
     <string name="vaccine_service_due"><![CDATA[%1$s <font color=#000000>imefika (%2$s)</font></b>]]></string>
     <string name="call_hivst_client">Mteja wa HIVST</string>
     <string name="head_of_family">Mkuu wa kaya</string>
-    <string name="malaria_client">Mteja wa malaria</string>
+    <string name="hivst_client">Mteja wa HIVST</string>
     <string name="copy_to_clipboard">Nakili namba ya simu</string>
     <string name="copied_phone_number">Namba ya simu imenakiliwa</string>
     <string name="call">Piga simu</string>
@@ -48,5 +48,6 @@
     <string name="edit">HARIRI</string>
     <string name="male">Me</string>
     <string name="female">Ke</string>
+    <string name="hivst">HIVST</string>
 
 </resources>
