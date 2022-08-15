@@ -28,6 +28,7 @@ public interface Constants {
     interface TABLES {
         String HIVST_REGISTER = "ec_hivst_register";
         String HIVST_FOLLOWUP = "ec_hivst_followup";
+        String HIVST_RESULTS = "ec_hivst_results";
     }
 
     interface ACTIVITY_PAYLOAD {

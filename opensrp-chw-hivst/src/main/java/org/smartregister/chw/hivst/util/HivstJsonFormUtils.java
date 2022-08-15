@@ -78,8 +78,10 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
         if (Constants.EVENT_TYPE.HIVST_REGISTRATION.equals(encounter_type)) {
             encounter_type = Constants.TABLES.HIVST_REGISTER;
-        } else if (Constants.EVENT_TYPE.HIVST_ISSUE_KITS.equals(encounter_type) || Constants.EVENT_TYPE.HIVST_RESULTS.equals(encounter_type)) {
+        } else if (Constants.EVENT_TYPE.HIVST_ISSUE_KITS.equals(encounter_type) ) {
             encounter_type = Constants.TABLES.HIVST_FOLLOWUP;
+        }else if (Constants.EVENT_TYPE.HIVST_RESULTS.equals(encounter_type)){
+            encounter_type = Constants.TABLES.HIVST_RESULTS;
         }
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
