@@ -167,7 +167,7 @@
                 android:src="@drawable/row_goto" />
 
             <org.smartregister.view.customcontrols.CustomFontTextView
-                android:id="@+id/textview_positive_date"
+                android:id="@+id/textview_selfTesting_results"
                 style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textview_positive_date"
+                android:layout_below="@+id/textview_selfTesting_results"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/cancel_image"
                 android:text="@string/self_testing_client_history_subtitle"
@@ -227,7 +227,7 @@
                 android:src="@drawable/row_goto" />
 
             <org.smartregister.view.customcontrols.CustomFontTextView
-                android:id="@+id/textview_family_has"
+                android:id="@+id/textView_selfTesting_history"
                 style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
                 style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textview_family_has"
+                android:layout_below="@+id/textView_selfTesting_history"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/family_image"
                 android:text="@string/self_testing_client_history_subtitle"

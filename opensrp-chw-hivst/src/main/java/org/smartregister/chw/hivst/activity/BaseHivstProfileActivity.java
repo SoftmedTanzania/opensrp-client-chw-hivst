@@ -52,7 +52,6 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     protected TextView textViewUniqueID;
     protected TextView textViewRecordHivst;
     protected TextView textViewRecordAnc;
-    protected TextView textview_positive_date;
     protected View view_last_visit_row;
     protected View view_most_due_overdue_row;
     protected View view_family_row;
@@ -115,7 +114,6 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         imageViewCross = findViewById(R.id.tick_image);
         tvUpComingServices = findViewById(R.id.textview_name_due);
         tvFamilyStatus = findViewById(R.id.textview_family_has);
-        textview_positive_date = findViewById(R.id.textview_positive_date);
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
