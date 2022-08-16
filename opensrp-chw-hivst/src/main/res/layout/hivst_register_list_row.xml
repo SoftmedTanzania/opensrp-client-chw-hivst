@@ -95,6 +95,7 @@
         android:paddingTop="@dimen/register_list_top_bottom_padding"
         android:paddingEnd="@dimen/register_list_item_padding"
         android:paddingRight="@dimen/register_list_item_padding"
+        android:visibility="gone"
         android:paddingBottom="@dimen/register_list_top_bottom_padding">
 
         <Button
