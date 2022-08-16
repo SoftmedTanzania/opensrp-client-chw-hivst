@@ -52,17 +52,21 @@ public class HivstDao extends AbstractDao {
         return res.get(0) > 0;
     }
 
-    public static Integer getHivstFamilyMembersCount(String familyBaseEntityId) {
-        String sql = "SELECT count(emc.base_entity_id) count FROM ec_hivst_confirmation emc " +
-                "INNER Join ec_family_member fm on fm.base_entity_id = emc.base_entity_id " +
-                "WHERE fm.relational_id = '" + familyBaseEntityId + "' AND fm.is_closed = 0 " +
-                "AND emc.is_closed = 0 AND emc.hivst = 1";
+    public static String getClientTestingHistory(String baseEntityId) {
+        String sql = "Select client_testing_history from ec_hivst_register where base_entity_id = '" + baseEntityId + "'";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "client_testing_history");
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1)
+            return null;
+        return res.get(0);
+    }
 
-        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
-
-        List<Integer> res = readData(sql, dataMap);
-        if (res == null || res.size() == 0)
-            return 0;
+    public static String getClientGroup(String baseEntityId) {
+        String sql = "Select client_group from ec_hivst_register where base_entity_id = '" + baseEntityId + "'";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "client_group");
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1)
+            return null;
         return res.get(0);
     }
 
