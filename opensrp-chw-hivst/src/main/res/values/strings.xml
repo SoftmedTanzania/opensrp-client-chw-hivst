@@ -50,7 +50,7 @@
     <string name="edit">EDIT</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="hivst">HIVST</string>
+    <string name="hivst">Self Testing</string>
     <string name="provide_self_testing_kits">Provide Self Testing Kits</string>
     <string name="self_testing_results_title">Self Testing Results</string>
     <string name="self_testing_results_subtitle">Record Self Testing Results</string>
