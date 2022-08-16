@@ -41,7 +41,7 @@ public class HivstDao extends AbstractDao {
 
     public static boolean isRegisteredForHivst(String baseEntityID) {
         String sql = "SELECT count(p.base_entity_id) count FROM ec_hivst_register p " +
-                "WHERE p.base_entity_id = '" + baseEntityID + "' AND p.is_closed = 0 AND p.hivst  = 1 ";
+                "WHERE p.base_entity_id = '" + baseEntityID + "' AND p.is_closed = 0  ";
 
         DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
 
