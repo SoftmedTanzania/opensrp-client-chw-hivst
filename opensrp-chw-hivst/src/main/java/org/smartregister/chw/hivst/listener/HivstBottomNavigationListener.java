@@ -22,10 +22,10 @@ public class HivstBottomNavigationListener extends BottomNavigationListener {
 
         BaseRegisterActivity baseRegisterActivity = (BaseRegisterActivity) context;
 
-        if (item.getItemId() == R.id.action_family) {
+        if (item.getItemId() == R.id.action_home) {
             baseRegisterActivity.switchToBaseFragment();
-        } else if (item.getItemId() == R.id.action_scan_qr) {
-            baseRegisterActivity.startQrCodeScanner();
+        } else if (item.getItemId() == R.id.action_mobilization) {
+            baseRegisterActivity.switchToFragment(1);
         }
 
         return true;

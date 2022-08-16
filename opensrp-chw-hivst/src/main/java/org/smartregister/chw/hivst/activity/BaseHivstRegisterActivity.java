@@ -135,7 +135,7 @@ public class BaseHivstRegisterActivity extends BaseRegisterActivity implements H
 
     @MenuRes
     public int getMenuResource() {
-        return R.menu.bottom_nav_family_menu;
+        return R.menu.bottom_nav_hivst;
     }
 
     @Override
