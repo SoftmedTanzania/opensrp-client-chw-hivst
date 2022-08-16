@@ -40,9 +40,8 @@ public class HivstDao extends AbstractDao {
     }
 
     public static boolean isRegisteredForHivst(String baseEntityID) {
-        String sql = "SELECT count(p.base_entity_id) count FROM ec_hivst_confirmation p " +
-                "WHERE p.base_entity_id = '" + baseEntityID + "' AND p.is_closed = 0 AND p.hivst  = 1 " +
-                "AND datetime('NOW') <= datetime(p.last_interacted_with/1000, 'unixepoch', 'localtime','+15 days')";
+        String sql = "SELECT count(p.base_entity_id) count FROM ec_hivst_register p " +
+                "WHERE p.base_entity_id = '" + baseEntityID + "' AND p.is_closed = 0 AND p.hivst  = 1 ";
 
         DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
 
@@ -95,7 +94,7 @@ public class HivstDao extends AbstractDao {
                 "       mr.* " +
                 "from ec_family_member m " +
                 "         inner join ec_family f on m.relational_id = f.base_entity_id " +
-                "         inner join ec_hiv_register mr on mr.base_entity_id = m.base_entity_id " +
+                "         inner join ec_hivst_register mr on mr.base_entity_id = m.base_entity_id " +
                 "         left join ec_family_member fh on fh.base_entity_id = f.family_head " +
                 "         left join ec_family_member pcg on pcg.base_entity_id = f.primary_caregiver " +
                 "         left join ec_anc_register ancr on ancr.base_entity_id = m.base_entity_id " +
