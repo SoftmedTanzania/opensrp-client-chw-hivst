@@ -137,4 +137,19 @@ public class BaseHivstRegisterFragment extends BaseRegisterFragment implements H
 //        implement dialog
     }
 
+    @Override
+    protected void refreshSyncProgressSpinner() {
+        if (isSyncing()) {
+            if (syncProgressBar != null) {
+                syncProgressBar.setVisibility(android.view.View.VISIBLE);
+            }
+        } else {
+            if (syncProgressBar != null) {
+                syncProgressBar.setVisibility(android.view.View.GONE);
+            }
+        }
+        if (syncButton != null) {
+            syncButton.setVisibility(android.view.View.GONE);
+        }
+    }
 }
