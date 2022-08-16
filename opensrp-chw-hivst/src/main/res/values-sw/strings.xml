@@ -12,6 +12,7 @@
     <string name="malaria_followup_visit">Tembeleo la ufuatiliaji</string>
     <string name="record_hivst">Rekodi ufuatiliaji wa HIVST</string>
     <string name="return_to_previous_page">Rudi kwenye wateja wote wa Self Testing</string>
+    <string name="return_to_all_self_testing_clients">Rudi kwenye wateja wote wa Self Testing</string>
     <string name="last_visit_40_days_ago">Tembeleo la mwisho %1$s uliyopita</string>
     <string name="view_medical_history">Angalia historia ya huduma</string>
     <string name="call_no_number_provided">(Hakuna namba iliyotolewa)</string>
