@@ -4,6 +4,7 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 
 import org.smartregister.chw.hivst.contract.HivstProfileContract;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.hivst.domain.MemberObject;
 
 import java.lang.ref.WeakReference;
@@ -65,6 +66,16 @@ public class BaseHivstProfilePresenter implements HivstProfileContract.Presenter
             interactor.saveRegistration(jsonString, getView());
         } catch (Exception e) {
             Timber.e(e);
+        }
+    }
+
+    @Override
+    public void showResultHistory(String baseEntityId){
+        if(getView() == null){
+            return;
+        }
+        if(HivstDao.clientHasTestKits(baseEntityId)){
+            getView().showResultHistory();
         }
     }
 }

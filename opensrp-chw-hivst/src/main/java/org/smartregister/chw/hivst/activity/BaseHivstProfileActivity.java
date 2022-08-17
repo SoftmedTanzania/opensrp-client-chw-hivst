@@ -155,6 +155,7 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         initializeFloatingMenu();
         recordAnc(memberObject);
         recordPnc(memberObject);
+        profilePresenter.showResultHistory(memberObject.getBaseEntityId());
     }
 
     @Override
@@ -205,6 +206,11 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     @Override
     public void hideView() {
         textViewRecordHivst.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showResultHistory() {
+        rlSelfTestingResults.setVisibility(View.VISIBLE);
     }
 
     @SuppressLint("DefaultLocale")

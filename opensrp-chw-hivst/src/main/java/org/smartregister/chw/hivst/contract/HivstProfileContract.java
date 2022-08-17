@@ -28,6 +28,8 @@ public interface HivstProfileContract {
         void startIssueSelfTestingKitsForm(String baseEntityId);
 
         void hideView();
+
+        void showResultHistory();
     }
 
     interface Presenter {
@@ -42,6 +44,8 @@ public interface HivstProfileContract {
         void refreshProfileBottom();
 
         void recordHivstButton(String visitState);
+
+        void showResultHistory(String baseEntityId);
     }
 
     interface Interactor {

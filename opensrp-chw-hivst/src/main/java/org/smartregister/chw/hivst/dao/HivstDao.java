@@ -10,28 +10,15 @@ import java.util.Locale;
 
 public class HivstDao extends AbstractDao {
 
-    public static Date getHivstTestDate(String baseEntityID) {
-        String sql = "select hivst_test_date from ec_hivst_confirmation where base_entity_id = '" + baseEntityID + "'";
-
-        DataMap<Date> dataMap = cursor -> getCursorValueAsDate(cursor, "hivst_test_date", getNativeFormsDateFormat());
-
-        List<Date> res = readData(sql, dataMap);
-        if (res == null || res.size() != 1)
-            return null;
-
-        return res.get(0);
-    }
-
-    public static Date getHivstFollowUpVisitDate(String baseEntityID) {
-        String sql = "SELECT eventDate FROM event where eventType ='Hivst Follow-up Visit' AND baseEntityId ='" + baseEntityID + "'";
-
-        DataMap<Date> dataMap = cursor -> getCursorValueAsDate(cursor, "eventDate", getNativeFormsDateFormat());
-
-        List<Date> res = readData(sql, dataMap);
-        if (res == null || res.size() != 1)
-            return null;
-
-        return res.get(0);
+    public static boolean clientHasTestKits(String baseEntityId){
+        String sql = "SELECT count(*) count FROM ec_hivst_results " +
+                     " WHERE entity_id = '" + baseEntityId + "'";
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
+        List<Integer> res = readData(sql, dataMap);
+        if(res == null || res.size() < 1){
+            return false;
+        }
+        return res.get(0) > 0;
     }
 
     public static void closeHivstMemberFromRegister(String baseEntityID) {
