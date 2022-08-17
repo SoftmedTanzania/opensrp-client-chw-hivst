@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -177,6 +178,8 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
             this.openUpcomingService();
         } else if (id == R.id.rlFamilyServicesDue) {
             this.openFamilyDueServices();
+        } else if (id == R.id.textview_record_hivst){
+            this.startIssueSelfTestingKitsForm(memberObject.getBaseEntityId());
         }
     }
 
@@ -293,6 +296,14 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     public void openFamilyDueServices() {
         //implement
     }
+
+
+
+    @Override
+    public void startIssueSelfTestingKitsForm(String baseEntityId) {
+        //implement
+    }
+
 
     @Nullable
     private String formatTime(Date dateTime) {

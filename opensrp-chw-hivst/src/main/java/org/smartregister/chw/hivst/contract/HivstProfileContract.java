@@ -25,6 +25,8 @@ public interface HivstProfileContract {
 
         void recordPnc(MemberObject memberObject);
 
+        void startIssueSelfTestingKitsForm(String baseEntityId);
+
         void hideView();
     }
 
