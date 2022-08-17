@@ -103,13 +103,20 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     }
 
     private static void createHivstResultRegistrationEvent(JSONObject jsonForm, boolean extraKits, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
-        String kitCode = "";
+        String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
         processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, "client");
         if (extraKits) {
             JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
+            String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
+            String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
+
             for (int i = 0; i < vals.length(); i++) {
                 String kitFor = vals.get(i).toString();
-                processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, kitFor);
+                if(kitFor.equalsIgnoreCase("sexual_partner")){
+                    processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner");
+                }else if(kitFor.equalsIgnoreCase("peer_friend")){
+                    processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend");
+                }
             }
         }
     }
@@ -119,7 +126,7 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         baseEvent.addObs(new Obs().withFormSubmissionField("kit_for").withValue(kitFor)
                 .withFieldCode("kit_for").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         baseEvent.addObs(new Obs().withFormSubmissionField("kit_code").withValue(kitCode)
-                .withFieldCode("kit_for").withFieldType("formsubmissionField").withFieldCode("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
+                .withFieldCode("kit_code").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         try {
             HivstUtil.processEvent(allSharedPreferences, baseEvent);
         } catch (Exception e) {
