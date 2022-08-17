@@ -20,8 +20,8 @@ public interface Constants {
 
     interface FORMS {
         String HIVST_REGISTRATION = "hivst_registration";
-        String HIVST_ISSUE_KITS = "hivs_issue_kits";
-        String HIVST_RECORD_RESULTS = "hivs_results";
+        String HIVST_ISSUE_KITS = "hivst_issue_kits";
+        String HIVST_RECORD_RESULTS = "hivst_results";
         String HIVST_FOLLOW_UP_VISIT = "hivst_followup_visit";
     }
 
