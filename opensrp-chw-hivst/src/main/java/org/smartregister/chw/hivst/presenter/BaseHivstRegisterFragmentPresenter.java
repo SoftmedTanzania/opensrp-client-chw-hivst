@@ -2,8 +2,6 @@ package org.smartregister.chw.hivst.presenter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hivst.contract.HivstRegisterFragmentContract;
-import org.smartregister.chw.hivst.fragment.BaseHivstResultRegisterFragment;
-import org.smartregister.chw.hivst.model.BaseHivstResultsFragmentModel;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.chw.hivst.util.DBConstants;
 import org.smartregister.configurableviews.model.RegisterConfiguration;

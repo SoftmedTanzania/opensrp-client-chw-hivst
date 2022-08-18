@@ -30,7 +30,7 @@ public class BaseHivstResultViewActivity extends SecuredActivity {
 
     @Override
     protected void onResumption() {
-
+        // Implement
     }
 
     public BaseHivstResultRegisterFragment getBaseFragment() {
