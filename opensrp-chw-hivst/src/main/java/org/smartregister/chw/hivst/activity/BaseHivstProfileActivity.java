@@ -159,6 +159,12 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        new android.os.Handler().postDelayed(() -> setupViews(), 1000);
+    }
+
+    @Override
     public void recordAnc(MemberObject memberObject) {
         //implement
     }
