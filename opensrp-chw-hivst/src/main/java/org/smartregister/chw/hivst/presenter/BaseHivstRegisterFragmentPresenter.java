@@ -2,6 +2,8 @@ package org.smartregister.chw.hivst.presenter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hivst.contract.HivstRegisterFragmentContract;
+import org.smartregister.chw.hivst.fragment.BaseHivstResultRegisterFragment;
+import org.smartregister.chw.hivst.model.BaseHivstResultsFragmentModel;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.chw.hivst.util.DBConstants;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
@@ -102,6 +104,6 @@ public class BaseHivstRegisterFragmentPresenter implements HivstRegisterFragment
 
     @Override
     public String getDueFilterCondition() {
-        return " (cast( julianday(STRFTIME('%Y-%m-%d', datetime('now'))) -  julianday(IFNULL(SUBSTR(hivst_test_date,7,4)|| '-' || SUBSTR(hivst_test_date,4,2) || '-' || SUBSTR(hivst_test_date,1,2),'')) as integer) between 7 and 14) ";
+        return "";
     }
 }

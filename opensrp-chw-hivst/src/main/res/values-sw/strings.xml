@@ -50,5 +50,10 @@
     <string name="male">Me</string>
     <string name="female">Ke</string>
     <string name="hivst">Self Testing</string>
+    <string name="hivst_results_history">HIVST Results History</string>
+    <string name="kit_for">Kit For:</string>
+    <string name="hivst_result">HIVST Result:</string>
+    <string name="hivst_kit_code">HIVST KIT Code:</string>
+    <string name="record_result">Record Result</string>
 
 </resources>

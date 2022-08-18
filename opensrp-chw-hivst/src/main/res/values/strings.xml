@@ -58,5 +58,10 @@
     <string name="self_testing_client_history_title">Client\'s Self Testing History</string>
     <string name="self_testing_client_history_subtitle">View Self Testing History</string>
     <string name="hivst_mobilization">Mobilization</string>
+    <string name="hivst_results_history">HIVST Results History</string>
+    <string name="hivst_kit_code">HIVST KIT Code:</string>
+    <string name="kit_for">Kit For:</string>
+    <string name="hivst_result">HIVST Result:</string>
+    <string name="record_result">Record Result</string>
 
 </resources>
