@@ -4,6 +4,7 @@ import static org.apache.commons.lang3.StringUtils.trim;
 
 import org.smartregister.chw.hivst.contract.HivstResultsFragmentContract;
 import org.smartregister.chw.hivst.util.Constants;
+import org.smartregister.chw.hivst.util.DBConstants;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
 import org.smartregister.configurableviews.model.View;
 
@@ -18,18 +19,19 @@ public class BaseHivstResultsFragmentPresenter implements HivstResultsFragmentCo
     protected RegisterConfiguration config;
     protected Set<View> visibleColumns = new TreeSet<>();
     protected String viewConfigurationIdentifier;
+    private String baseEntityId;
 
-
-    public BaseHivstResultsFragmentPresenter(HivstResultsFragmentContract.View view, HivstResultsFragmentContract.Model model, String viewConfigurationIdentifier) {
+    public BaseHivstResultsFragmentPresenter(String baseEntityId, HivstResultsFragmentContract.View view, HivstResultsFragmentContract.Model model, String viewConfigurationIdentifier) {
         this.viewReference = new WeakReference<>(view);
         this.model = model;
+        this.baseEntityId = baseEntityId;
         this.viewConfigurationIdentifier = viewConfigurationIdentifier;
         this.config = model.defaultRegisterConfiguration();
     }
 
     @Override
     public String getMainCondition() {
-        return "";
+        return " " + Constants.TABLES.HIVST_RESULTS + "." + DBConstants.KEY.ENTITY_ID + " = " + "'" + baseEntityId + "'";
     }
 
     @Override

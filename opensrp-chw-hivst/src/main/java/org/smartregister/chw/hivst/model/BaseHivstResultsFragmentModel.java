@@ -1,14 +1,19 @@
 package org.smartregister.chw.hivst.model;
 
+import androidx.annotation.NonNull;
+
 import org.smartregister.chw.hivst.HivstLibrary;
 import org.smartregister.chw.hivst.contract.HivstResultsFragmentContract;
 import org.smartregister.chw.hivst.util.ConfigHelper;
+import org.smartregister.chw.hivst.util.Constants;
+import org.smartregister.chw.hivst.util.DBConstants;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.configurableviews.model.ViewConfiguration;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContract.Model {
@@ -34,18 +39,24 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
         return countQueryBuilder.mainCondition(mainCondition);
     }
 
+
+    @NonNull
     @Override
-    public String mainSelect(String tableName, String mainCondition) {
+    public String mainSelect(@NonNull String tableName, @NonNull String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
         queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName));
         return queryBuilder.mainCondition(mainCondition);
     }
 
-
     protected String[] mainColumns(String tableName) {
-        String[] columns = new String[]{
-                tableName + ".relationalid"
-        };
-        return columns;
+        Set<String> columnList = new HashSet<>();
+        columnList.add(tableName + "." + DBConstants.KEY.ENTITY_ID + " as " + DBConstants.KEY.BASE_ENTITY_ID);
+        columnList.add(tableName + "." + DBConstants.KEY.BASE_ENTITY_ID + " as " + DBConstants.KEY.ENTITY_ID);
+        columnList.add(Constants.TABLES.HIVST_RESULTS + "." + DBConstants.KEY.KIT_CODE);
+        columnList.add(Constants.TABLES.HIVST_RESULTS  + "." + DBConstants.KEY.KIT_FOR);
+        columnList.add(Constants.TABLES.HIVST_RESULTS  + "." + DBConstants.KEY.HIVST_RESULT);
+
+        return columnList.toArray(new String[columnList.size()]);
+
     }
 }

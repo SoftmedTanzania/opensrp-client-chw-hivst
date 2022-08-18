@@ -1,5 +1,6 @@
 package org.smartregister.chw.hivst.fragment;
 
+import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -7,9 +8,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import org.smartregister.chw.hivst.contract.HivstResultsFragmentContract;
 import org.smartregister.chw.hivst.model.BaseHivstResultsFragmentModel;
-import org.smartregister.chw.hivst.presenter.BaseHivstRegisterFragmentPresenter;
 import org.smartregister.chw.hivst.presenter.BaseHivstResultsFragmentPresenter;
 import org.smartregister.chw.hivst.provider.HivstResultsViewProvider;
+import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
@@ -24,6 +25,7 @@ import java.util.Set;
 public class BaseHivstResultRegisterFragment extends BaseRegisterFragment implements HivstResultsFragmentContract.View {
 
     public static final String CLICK_VIEW_NORMAL = "click_view_normal";
+    private String baseEntityId;
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
@@ -31,6 +33,14 @@ public class BaseHivstResultRegisterFragment extends BaseRegisterFragment implem
         clientAdapter = new RecyclerViewPaginatedAdapter(null, resultsViewProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
+    }
+
+    public static BaseHivstResultRegisterFragment newInstance(String baseEntityId) {
+        BaseHivstResultRegisterFragment baseHivstResultRegisterFragment = new BaseHivstResultRegisterFragment();
+        Bundle b = new Bundle();
+        b.putString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
+        baseHivstResultRegisterFragment.setArguments(b);
+        return baseHivstResultRegisterFragment;
     }
 
     @Override
@@ -89,11 +99,19 @@ public class BaseHivstResultRegisterFragment extends BaseRegisterFragment implem
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            this.baseEntityId = getArguments().getString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
+        }
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     protected void initializePresenter() {
         if (getActivity() == null) {
             return;
         }
-        presenter = new BaseHivstResultsFragmentPresenter(this, new BaseHivstResultsFragmentModel(), null);
+        presenter = new BaseHivstResultsFragmentPresenter(baseEntityId, this, new BaseHivstResultsFragmentModel(), null);
     }
 
     @Override

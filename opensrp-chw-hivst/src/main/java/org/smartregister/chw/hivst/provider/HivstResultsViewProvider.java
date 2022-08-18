@@ -60,24 +60,31 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
 
-//            String sampleId = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HVL_SAMPLE_ID, false);
-//            String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HVL_SAMPLE_COLLECTION_DATE, false);
-//            String hvlResult = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HVL_RESULT, false);
+            String kitCode = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_CODE, false);
+            //String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HVL_SAMPLE_COLLECTION_DATE, false);
+            String kitFor = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_FOR, false);
+            String hivstResult = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HIVST_RESULT, false);
 
-//            if (StringUtils.isBlank(hvlResult)) {
-//                viewHolder.hivstWrapper.setVisibility(View.GONE);
-//                viewHolder.dueWrapper.setVisibility(View.VISIBLE);
-//            } else {
-//                viewHolder.hivstResult.setText(hvlResult);
-//                viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
-//                viewHolder.dueWrapper.setVisibility(View.GONE);
-//            }
-//
-//            viewHolder.kitCode.setText(sampleId);
-//            viewHolder.kitFor.setText(collectionDate);
-//            viewHolder.recordHivstResult.setTag(pc);
-//            viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultRegisterFragment.CLICK_VIEW_NORMAL);
-//            viewHolder.recordHivstResult.setOnClickListener(onClickListener);
+            if (StringUtils.isBlank(hivstResult)) {
+                viewHolder.hivstWrapper.setVisibility(View.GONE);
+                viewHolder.dueWrapper.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.hivstResult.setText(hivstResult);
+                viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
+                viewHolder.dueWrapper.setVisibility(View.GONE);
+            }
+
+            if (StringUtils.isBlank(kitCode)) {
+                viewHolder.kitCodeWrapper.setVisibility(View.GONE);
+            } else {
+                viewHolder.kitCodeWrapper.setVisibility(View.VISIBLE);
+            }
+
+            viewHolder.kitCode.setText(kitCode);
+            viewHolder.kitFor.setText(kitFor);
+            viewHolder.recordHivstResult.setTag(pc);
+            viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultRegisterFragment.CLICK_VIEW_NORMAL);
+            viewHolder.recordHivstResult.setOnClickListener(onClickListener);
 
         } catch (Exception e) {
             Timber.e(e);
@@ -139,6 +146,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
         public TextView hivstResult;
         public TextView collectionDate;
         public RelativeLayout hivstWrapper;
+        public RelativeLayout kitCodeWrapper;
         public TextView resultTitle;
 
         public Button recordHivstResult;
@@ -152,6 +160,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
             collectionDate = itemView.findViewById(R.id.collection_date);
             hivstResult = itemView.findViewById(R.id.result);
             hivstWrapper = itemView.findViewById(R.id.rlRecordHivstWrapper);
+            kitCodeWrapper = itemView.findViewById(R.id.rlKitCodeWrapper);
             recordHivstResult = itemView.findViewById(R.id.record_result_button);
             dueWrapper = itemView.findViewById(R.id.due_button_wrapper);
             resultTitle = itemView.findViewById(R.id.hivst_result_label);
