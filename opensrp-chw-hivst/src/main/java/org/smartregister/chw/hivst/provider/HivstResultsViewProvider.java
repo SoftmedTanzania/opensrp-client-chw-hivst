@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.apache.commons.lang3.StringUtils;
-import org.smartregister.chw.hivst.fragment.BaseHivstResultRegisterFragment;
+import org.smartregister.chw.hivst.fragment.BaseHivstResultViewFragment;
 import org.smartregister.chw.hivst.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewProvider;
@@ -83,7 +83,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
             viewHolder.kitCode.setText(kitCode);
             viewHolder.kitFor.setText(kitFor);
             viewHolder.recordHivstResult.setTag(pc);
-            viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultRegisterFragment.CLICK_VIEW_NORMAL);
+            viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHivstResult.setOnClickListener(onClickListener);
 
         } catch (Exception e) {

@@ -22,7 +22,7 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import java.util.HashMap;
 import java.util.Set;
 
-public class BaseHivstResultRegisterFragment extends BaseRegisterFragment implements HivstResultsFragmentContract.View {
+public class BaseHivstResultViewFragment extends BaseRegisterFragment implements HivstResultsFragmentContract.View {
 
     public static final String CLICK_VIEW_NORMAL = "click_view_normal";
     private String baseEntityId;
@@ -35,12 +35,12 @@ public class BaseHivstResultRegisterFragment extends BaseRegisterFragment implem
         clientsView.setAdapter(clientAdapter);
     }
 
-    public static BaseHivstResultRegisterFragment newInstance(String baseEntityId) {
-        BaseHivstResultRegisterFragment baseHivstResultRegisterFragment = new BaseHivstResultRegisterFragment();
+    public static BaseHivstResultViewFragment newInstance(String baseEntityId) {
+        BaseHivstResultViewFragment baseHivstResultViewFragment = new BaseHivstResultViewFragment();
         Bundle b = new Bundle();
         b.putString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
-        baseHivstResultRegisterFragment.setArguments(b);
-        return baseHivstResultRegisterFragment;
+        baseHivstResultViewFragment.setArguments(b);
+        return baseHivstResultViewFragment;
     }
 
     @Override

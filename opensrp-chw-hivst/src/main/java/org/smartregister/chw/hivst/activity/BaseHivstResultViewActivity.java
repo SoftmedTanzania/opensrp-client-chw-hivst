@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import androidx.fragment.app.FragmentTransaction;
 
-import org.smartregister.chw.hivst.fragment.BaseHivstResultRegisterFragment;
+import org.smartregister.chw.hivst.fragment.BaseHivstResultViewFragment;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.hivst.R;
 import org.smartregister.view.activity.SecuredActivity;
@@ -33,8 +33,8 @@ public class BaseHivstResultViewActivity extends SecuredActivity {
         // Implement
     }
 
-    public BaseHivstResultRegisterFragment getBaseFragment() {
-        return BaseHivstResultRegisterFragment.newInstance(baseEntityId);
+    public BaseHivstResultViewFragment getBaseFragment() {
+        return BaseHivstResultViewFragment.newInstance(baseEntityId);
     }
 
     private void loadFragment() {
