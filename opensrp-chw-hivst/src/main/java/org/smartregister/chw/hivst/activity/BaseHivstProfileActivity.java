@@ -2,6 +2,7 @@ package org.smartregister.chw.hivst.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -17,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -187,6 +187,8 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
             this.openFamilyDueServices();
         } else if (id == R.id.textview_record_hivst){
             this.startIssueSelfTestingKitsForm(memberObject.getBaseEntityId());
+        } else if (id == R.id.rlSelfTestingHistory) {
+            this.startResultViewActivity(this.getBaseContext(), memberObject.getBaseEntityId());
         }
     }
 
@@ -196,6 +198,10 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         profilePresenter = new BaseHivstProfilePresenter(this, new BaseHivstProfileInteractor(), memberObject);
         fetchProfileData();
         profilePresenter.refreshProfileBottom();
+    }
+
+    public void startResultViewActivity(Context context, String baseEntityId) {
+        BaseHivstResultViewActivity.startResultViewActivity(context, baseEntityId);
     }
 
     public void initializeFloatingMenu() {

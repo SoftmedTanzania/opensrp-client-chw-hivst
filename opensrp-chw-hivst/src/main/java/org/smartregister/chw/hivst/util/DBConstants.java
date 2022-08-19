@@ -18,7 +18,8 @@ public class DBConstants {
         public static final String CLIENT_GROUP = "client_group";
         public static final String NUMBER_OF_KITS_ISSUED = "number_of_kits_issued";
         public static final String KIT_CODES = "kit_codes";
+        public static final String KIT_CODE = "kit_code";
         public static final String KIT_FOR = "kit_for";
-        public static final String TEST_RESULTS = "test_results";
+        public static final String HIVST_RESULT = "hivst_result";
     }
 }
