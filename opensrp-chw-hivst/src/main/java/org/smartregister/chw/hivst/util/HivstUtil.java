@@ -13,8 +13,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.Spanned;
@@ -35,6 +33,8 @@ import org.smartregister.util.PermissionUtils;
 
 import java.util.Date;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import timber.log.Timber;
 
 import static org.smartregister.util.Utils.getAllSharedPreferences;
@@ -122,8 +122,27 @@ public class HivstUtil {
         HivstUtil.processEvent(allSharedPreferences, baseEvent);
     }
 
+    public static void saveFormEvent(final String jsonString, String baseEntityId, String entityId) throws Exception {
+        AllSharedPreferences allSharedPreferences = HivstLibrary.getInstance().context().allSharedPreferences();
+        Event baseEvent = HivstJsonFormUtils.processJsonForm(allSharedPreferences, jsonString);
+        if (baseEvent != null) {
+            baseEvent.withBaseEntityId(baseEntityId);
+            baseEvent.withFormSubmissionId(entityId);
+            HivstUtil.processEvent(allSharedPreferences, baseEvent);
+        }
+    }
+
     public static int getMemberProfileImageResourceIdentifier(String entityType) {
         return R.mipmap.ic_member;
+    }
+
+    public static String getGenderTranslated(Context context, String gender) {
+        if (gender.equalsIgnoreCase(Gender.MALE.toString())) {
+            return context.getResources().getString(R.string.male);
+        } else if (gender.equalsIgnoreCase(Gender.FEMALE.toString())) {
+            return context.getResources().getString(R.string.female);
+        }
+        return "";
     }
 
     public static class CloseHivstMemberFromRegister extends AsyncTask<Void, Void, Void> {
@@ -139,14 +158,5 @@ public class HivstUtil {
             return null;
         }
 
-    }
-
-    public static String getGenderTranslated(Context context, String gender) {
-        if (gender.equalsIgnoreCase(Gender.MALE.toString())) {
-            return context.getResources().getString(R.string.male);
-        } else if (gender.equalsIgnoreCase(Gender.FEMALE.toString())) {
-            return context.getResources().getString(R.string.female);
-        }
-        return "";
     }
 }
