@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class BaseHivstResultViewActivity extends SecuredActivity implements View.OnClickListener {
     protected BaseHivstResultViewContract.Presenter resultsPresenter;
     private String baseEntityId;
+    private String entityId;
 
     public static void startResultViewActivity(Context context, String baseEntityId) {
         // implement in app
@@ -35,17 +36,19 @@ public class BaseHivstResultViewActivity extends SecuredActivity implements View
         String jsonString = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.HIVST_FORM_NAME);
         String entityId = getIntent().getStringExtra(Constants.JSON_FORM_EXTRA.ENTITY_ID);
         if (StringUtils.isNotBlank(jsonString)) {
-            startFormActivity(jsonString, baseEntityId, entityId);
+            this.baseEntityId = baseEntityId;
+            this.entityId = entityId;
+            startFormActivity(jsonString);
         } else {
             this.baseEntityId = baseEntityId;
             loadFragment();
-            initializePresenter();
             setupViews();
         }
+        initializePresenter();
     }
 
 
-    public void startFormActivity(String jsonString, String baseEntityId, String entityId) {
+    public void startFormActivity(String jsonString) {
         //Implement
     }
 
@@ -86,10 +89,9 @@ public class BaseHivstResultViewActivity extends SecuredActivity implements View
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == Activity.RESULT_OK) {
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
-            String baseEntityId = data.getStringExtra(Constants.JSON_FORM_EXTRA.BASE_ENTITY_ID);
-            String entityId = data.getStringExtra(Constants.JSON_FORM_EXTRA.ENTITY_ID);
             if (StringUtils.isNotBlank(jsonString) && StringUtils.isNotBlank(baseEntityId) && StringUtils.isNotBlank(entityId)) {
                 resultsPresenter.saveForm(jsonString, baseEntityId, entityId);
+                finish();
             }
         } else {
             finish();
