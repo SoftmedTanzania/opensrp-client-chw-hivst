@@ -67,11 +67,11 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
 
             if (StringUtils.isBlank(hivstResult)) {
                 viewHolder.hivstWrapper.setVisibility(View.GONE);
-                viewHolder.dueWrapper.setVisibility(View.VISIBLE);
+                viewHolder.recordHivstResult.setVisibility(View.VISIBLE);
             } else {
                 viewHolder.hivstResult.setText(hivstResult);
                 viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
-                viewHolder.dueWrapper.setVisibility(View.GONE);
+                viewHolder.recordHivstResult.setVisibility(View.GONE);
             }
 
             if (StringUtils.isBlank(kitCode)) {
@@ -150,7 +150,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
         public TextView resultTitle;
 
         public Button recordHivstResult;
-        public View dueWrapper;
+
 
         public RegisterViewHolder(View itemView) {
             super(itemView);
@@ -162,7 +162,6 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
             hivstWrapper = itemView.findViewById(R.id.rlRecordHivstWrapper);
             kitCodeWrapper = itemView.findViewById(R.id.rlKitCodeWrapper);
             recordHivstResult = itemView.findViewById(R.id.record_result_button);
-            dueWrapper = itemView.findViewById(R.id.due_button_wrapper);
             resultTitle = itemView.findViewById(R.id.hivst_result_label);
         }
     }
