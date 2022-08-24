@@ -1,6 +1,5 @@
 package org.smartregister.chw.hivst.fragment;
 
-import static org.smartregister.chw.hivst.util.Constants.REQUEST_CODE_GET_JSON;
 import static org.smartregister.util.JsonFormUtils.ENTITY_ID;
 import static org.smartregister.util.JsonFormUtils.generateRandomUUIDString;
 
