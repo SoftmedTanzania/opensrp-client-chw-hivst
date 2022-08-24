@@ -48,12 +48,12 @@ public class BaseHivstRegisterFragmentPresenterHivst {
 
     @Test
     public void getDefaultSortQuery() {
-        Assert.assertEquals(Constants.TABLES.HIVST_CONFIRMATION + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ", baseHivstRegisterFragmentPresenter.getDefaultSortQuery());
+        Assert.assertEquals(Constants.TABLES.HIVST_REGISTER + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ", baseHivstRegisterFragmentPresenter.getDefaultSortQuery());
     }
 
     @Test
     public void getMainTable() {
-        Assert.assertEquals(Constants.TABLES.HIVST_CONFIRMATION, baseHivstRegisterFragmentPresenter.getMainTable());
+        Assert.assertEquals(Constants.TABLES.HIVST_REGISTER, baseHivstRegisterFragmentPresenter.getMainTable());
     }
 
     @Test

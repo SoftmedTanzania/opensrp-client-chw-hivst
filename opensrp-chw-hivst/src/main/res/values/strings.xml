@@ -63,5 +63,9 @@
     <string name="kit_for">Kit For:</string>
     <string name="hivst_result">HIVST Result:</string>
     <string name="record_result">Record Result</string>
+    <string name="self_testing_sessions">Self Testing Sessions</string>
+    <string name="mobilization_session_participants">Participants: %s</string>
+    <string name="mobilization_condoms_issued">Condoms Issued: %s</string>
+    <string name="mobilziation_session_date">Date: %s</string>
 
 </resources>
