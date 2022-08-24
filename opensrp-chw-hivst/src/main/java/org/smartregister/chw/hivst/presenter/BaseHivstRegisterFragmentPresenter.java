@@ -34,7 +34,7 @@ public class BaseHivstRegisterFragmentPresenter implements HivstRegisterFragment
 
     @Override
     public String getMainCondition() {
-        return "";
+        return " ec_hivst_register.is_closed is 0 ";
     }
 
     @Override
