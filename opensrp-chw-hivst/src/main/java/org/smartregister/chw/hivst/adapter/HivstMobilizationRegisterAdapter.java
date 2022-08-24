@@ -54,7 +54,7 @@ public class HivstMobilizationRegisterAdapter extends RecyclerView.Adapter<Hivst
 
         public void bindData(HivstMobilizationModel hivstMobilizationModel) {
             mobilizationSessionDate = itemView.findViewById(R.id.mobilization_session_date);
-            mobilizationSessionParticipants = itemView.findViewById(R.id.mobilization_session_condoms_issued);
+            mobilizationSessionParticipants = itemView.findViewById(R.id.mobilization_session_participants);
             mobilizationSessionCondomsIssued = itemView.findViewById(R.id.mobilization_session_condoms_issued);
 
             mobilizationSessionDate.setText(context.getString(R.string.mobilziation_session_date, hivstMobilizationModel.getSessionDate()));

@@ -19,6 +19,7 @@ public interface Constants {
         String HIVST_ISSUE_KITS = "Self Testing Kits Issue";
         String HIVST_RESULTS = "Self Testing Results";
         String HIVST_RESULTS_REGISTRATION = "Self Testing Results Registration";
+        String HIVST_MOBILIZATION = "HIVST Mobilization Session";
     }
 
     interface FORMS {
