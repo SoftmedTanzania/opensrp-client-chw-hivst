@@ -39,6 +39,20 @@ public class HivstDao extends AbstractDao {
         return res.get(0) > 0;
     }
 
+    public static boolean isTheClientKnownPositiveAtReg(String baseEntityId){
+        String sql = "Select known_positive_during_reg FROM ec_hivst_register p " +
+                " WHERE p.base_entity_id = '"+ baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "known_positive_during_reg");
+
+        List<String> res = readData(sql, dataMap);
+        if(res != null && res.size() != 0 && res.get(0) != null){
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+
+        return false;
+    }
+
     public static String getClientTestingHistory(String baseEntityId) {
         String sql = "Select client_testing_history from ec_hivst_register where base_entity_id = '" + baseEntityId + "'";
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "client_testing_history");
