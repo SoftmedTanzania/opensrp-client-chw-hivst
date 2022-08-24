@@ -30,7 +30,9 @@ public class HivstMobilizationDao extends AbstractDao {
     }
 
     public static List<HivstMobilizationModel> getMobilizationSessions() {
-        String sql = "SELECT * FROM " + Constants.TABLES.HIVST_MOBILIZATION + " ORDER BY mobilization_date DESC";
+        String sql = "SELECT *,  substr(mobilization_date, 7, 4)||'-'|| " +
+                "                substr(mobilization_date, 4,2)||'-'|| " +
+                "                substr(mobilization_date, 1,2) as orderDate FROM " + Constants.TABLES.HIVST_MOBILIZATION + " ORDER BY julianday(orderDate)  DESC";
 
         DataMap<HivstMobilizationModel> dataMap = cursor -> {
             HivstMobilizationModel hivstMobilizationModel = new HivstMobilizationModel();
