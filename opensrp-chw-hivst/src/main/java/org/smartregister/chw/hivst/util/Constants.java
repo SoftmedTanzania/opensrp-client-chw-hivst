@@ -26,12 +26,14 @@ public interface Constants {
         String HIVST_ISSUE_KITS = "hivst_issue_kits";
         String HIVST_RECORD_RESULTS = "hivst_results";
         String HIVST_FOLLOW_UP_VISIT = "hivst_followup_visit";
+        String HIVST_MOBILIZATION_SESSION = "hivst_mobilization_session";
     }
 
     interface TABLES {
         String HIVST_REGISTER = "ec_hivst_register";
         String HIVST_FOLLOWUP = "ec_hivst_followup";
         String HIVST_RESULTS = "ec_hivst_results";
+        String HIVST_MOBILIZATION = "ec_hivst_mobilization";
     }
 
     interface ACTIVITY_PAYLOAD {
@@ -53,6 +55,13 @@ public interface Constants {
 
     interface HIVST_MEMBER_OBJECT {
         String MEMBER_OBJECT = "memberObject";
+    }
+
+    public static class FORM_SUBMISSION_FIELD {
+        public static final String MOBILIZATION_PARTICIPANTS_NUMBER = "participants_number";
+        public static final String MOBILIZATION_DATE = "mobilization_date";
+        public static final String MOBILIZATION_MALE_CONDOMS_ISSUED = "male_condoms_issued";
+        public static final String MOBILIZATION_FEMALE_CONDOMS_ISSUED = "female_condoms_issued";
     }
 
 }
