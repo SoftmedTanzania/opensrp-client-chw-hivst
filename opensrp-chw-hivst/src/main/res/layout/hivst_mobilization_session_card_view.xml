@@ -15,9 +15,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
+            android:padding="10dp"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/ic_jobaids"
-            android:contentDescription="mobilization session"/>
+            android:contentDescription="mobilization session"
+            android:src="@drawable/ic_mobilization" />
 
 
         <LinearLayout
@@ -27,9 +28,8 @@
             android:layout_below="@id/mobilization_session_label"
             android:layout_toEndOf="@id/iv_mobilization_session">
 
-            <org.smartregister.view.customcontrols.CustomFontTextView
+            <TextView
                 android:id="@+id/mobilization_session_participants"
-                style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -39,13 +39,12 @@
                 android:scrollHorizontally="false"
                 android:singleLine="false"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+
                 android:visibility="visible"
                 tools:text="Participants:" />
 
-            <org.smartregister.view.customcontrols.CustomFontTextView
+            <TextView
                 android:id="@+id/mobilization_session_date"
-                style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -55,15 +54,13 @@
                 android:scrollHorizontally="false"
                 android:singleLine="false"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
                 android:visibility="visible"
                 tools:text="Date:" />
 
         </LinearLayout>
 
-        <org.smartregister.view.customcontrols.CustomFontTextView
+        <TextView
             android:id="@+id/mobilization_session_label"
-            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -72,11 +69,10 @@
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
-        <org.smartregister.view.customcontrols.CustomFontTextView
+        <TextView
             android:id="@+id/mobilization_session_condoms_issued"
-            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/mobilization_session_details"
@@ -89,7 +85,6 @@
             android:scrollHorizontally="false"
             android:singleLine="false"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
             android:visibility="visible"
             tools:text="Condoms Issued:" />
 
