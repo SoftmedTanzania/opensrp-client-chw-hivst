@@ -1,14 +1,7 @@
 package org.smartregister.chw.hivst.fragment;
 
-import static org.smartregister.util.JsonFormUtils.ENTITY_ID;
-import static org.smartregister.util.JsonFormUtils.generateRandomUUIDString;
-
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -25,31 +18,43 @@ import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.hivst.R;
-import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.List;
 import java.util.Set;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import timber.log.Timber;
+
+import static org.smartregister.util.JsonFormUtils.ENTITY_ID;
+import static org.smartregister.util.JsonFormUtils.generateRandomUUIDString;
 
 public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFragment {
 
-    private android.view.View view;
     protected Toolbar toolbar;
+    private android.view.View view;
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
         HivstMobilizationRegisterProvider mobilizationRegisterProvider = new HivstMobilizationRegisterProvider(getActivity(), paginationViewHandler, registerActionHandler, visibleColumns);
-        List<HivstMobilizationModel> hivstMobilizationModels = HivstMobilizationDao.getMobilizationSessions();
         clientAdapter = new RecyclerViewPaginatedAdapter(null, mobilizationRegisterProvider, null);
         clientAdapter.setTotalcount(0);
         clientAdapter.setCurrentlimit(20);
+        setUpAdapter();
+
+    }
+
+    public void setUpAdapter(){
+        List<HivstMobilizationModel> hivstMobilizationModels = HivstMobilizationDao.getMobilizationSessions();
         if (hivstMobilizationModels != null && !hivstMobilizationModels.isEmpty()) {
             clientsView.setAdapter(new HivstMobilizationRegisterAdapter(hivstMobilizationModels, requireActivity()));
         }
     }
+
+
 
     @Override
     public void setupViews(android.view.View view) {
@@ -127,9 +132,7 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
 
-        if (clientsView.getAdapter() != null) {
-            clientsView.getAdapter().notifyDataSetChanged();
-        }
+        new android.os.Handler().postDelayed(this::setUpAdapter, 1000);
     }
 
     @Override
@@ -193,7 +196,7 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         }
     }
 
-    protected  void startForm(JSONObject form) {
+    protected void startForm(JSONObject form) {
         //Start Form in APP
     }
 }
