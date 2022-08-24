@@ -17,6 +17,7 @@ import org.smartregister.AllConstants;
 import org.smartregister.Context;
 import org.smartregister.chw.hivst.contract.HivstRegisterContract;
 import org.smartregister.chw.hivst.fragment.BaseHivstRegisterFragment;
+import org.smartregister.chw.hivst.fragment.BaseHivstMobilizationRegisterFragment;
 import org.smartregister.chw.hivst.interactor.BaseHivstRegisterInteractor;
 import org.smartregister.chw.hivst.listener.HivstBottomNavigationListener;
 import org.smartregister.chw.hivst.model.BaseHivstRegisterModel;
@@ -150,7 +151,9 @@ public class BaseHivstRegisterActivity extends BaseRegisterActivity implements H
 
     @Override
     protected Fragment[] getOtherFragments() {
-        return new Fragment[0];
+        return new Fragment[] {
+            new BaseHivstMobilizationRegisterFragment()
+        };
     }
 
     @Override

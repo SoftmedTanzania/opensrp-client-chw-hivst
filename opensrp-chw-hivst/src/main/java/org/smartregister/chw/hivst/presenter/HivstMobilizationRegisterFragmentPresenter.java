@@ -16,7 +16,7 @@ public class HivstMobilizationRegisterFragmentPresenter extends BaseHivstRegiste
 
     @Override
     public String getMainCondition() {
-        return Constants.TABLES.HIVST_MOBILIZATION + "." + "is_closed is 0";
+        return "";
     }
 
 }

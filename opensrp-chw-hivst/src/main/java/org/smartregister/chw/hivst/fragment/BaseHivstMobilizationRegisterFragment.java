@@ -1,5 +1,6 @@
 package org.smartregister.chw.hivst.fragment;
 
+import static org.smartregister.chw.hivst.util.Constants.REQUEST_CODE_GET_JSON;
 import static org.smartregister.util.JsonFormUtils.ENTITY_ID;
 import static org.smartregister.util.JsonFormUtils.generateRandomUUIDString;
 
@@ -25,6 +26,7 @@ import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.hivst.R;
+import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -33,9 +35,10 @@ import java.util.Set;
 
 import timber.log.Timber;
 
-public class HivstMobilizationRegisterFragment extends BaseHivstRegisterFragment {
+public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFragment {
 
     private android.view.View view;
+    protected Toolbar toolbar;
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
@@ -55,7 +58,7 @@ public class HivstMobilizationRegisterFragment extends BaseHivstRegisterFragment
         super.setupViews(view);
         this.view = view;
 
-        Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
+        toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
@@ -121,7 +124,6 @@ public class HivstMobilizationRegisterFragment extends BaseHivstRegisterFragment
     public void onResume() {
         super.onResume();
 
-        Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
@@ -183,16 +185,16 @@ public class HivstMobilizationRegisterFragment extends BaseHivstRegisterFragment
                     if (form != null) {
                         String randomId = generateRandomUUIDString();
                         form.put(ENTITY_ID, randomId);
-//TODO: Refactor
-                        //   JSONObject chwName = getFieldJSONObject(fields(form, STEP1), "chw_name");
-                        //   AllSharedPreferences preferences = ChwApplication.getInstance().getContext().allSharedPreferences();
-                        //   chwName.put(VALUE, preferences.getANMPreferredName(preferences.fetchRegisteredANM()));
-                        //        requireActivity().startActivityForResult(org.smartregister.chw.core.utils.FormUtils.getStartFormActivity(form, requireActivity().getString(R.string.sbcc), requireActivity()), JsonFormUtils.REQUEST_CODE_GET_JSON);
+                        startForm(form);
                     }
                 } catch (JSONException e) {
                     Timber.e(e);
                 }
             });
         }
+    }
+
+    protected  void startForm(JSONObject form) {
+        //Start Form in APP
     }
 }
