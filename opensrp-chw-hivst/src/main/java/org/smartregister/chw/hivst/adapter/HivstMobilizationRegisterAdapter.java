@@ -16,13 +16,13 @@ import java.util.List;
 
 public class HivstMobilizationRegisterAdapter extends RecyclerView.Adapter<HivstMobilizationRegisterAdapter.HivstMobilzationViewHolder> {
 
-    private static Context context;
+    private final Context context;
     private final List<HivstMobilizationModel> hivstMobilizationModels;
 
 
     public HivstMobilizationRegisterAdapter(List<HivstMobilizationModel> hivstMobilizationModels, Context context) {
         this.hivstMobilizationModels = hivstMobilizationModels;
-        HivstMobilizationRegisterAdapter.context = context;
+        this.context = context;
     }
 
     @NonNull
@@ -43,7 +43,7 @@ public class HivstMobilizationRegisterAdapter extends RecyclerView.Adapter<Hivst
         return hivstMobilizationModels.size();
     }
 
-    protected static class HivstMobilzationViewHolder extends RecyclerView.ViewHolder {
+    protected class HivstMobilzationViewHolder extends RecyclerView.ViewHolder {
         public TextView mobilizationSessionDate;
         public TextView mobilizationSessionParticipants;
         public TextView mobilizationSessionCondomsIssued;
