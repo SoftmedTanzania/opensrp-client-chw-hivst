@@ -46,6 +46,7 @@ public class BaseHivstRegisterActivity extends BaseRegisterActivity implements H
     protected String FAMILY_BASE_ENTITY_ID;
     protected String ACTION;
     protected String FORM_NAME;
+    protected String GENDER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class BaseHivstRegisterActivity extends BaseRegisterActivity implements H
         FAMILY_BASE_ENTITY_ID = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.FAMILY_BASE_ENTITY_ID);
         ACTION = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.ACTION);
         FORM_NAME = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.HIVST_FORM_NAME);
+        GENDER = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.GENDER);
         onStartActivityWithAction();
     }
 
@@ -76,7 +78,7 @@ public class BaseHivstRegisterActivity extends BaseRegisterActivity implements H
         try {
             if (mBaseFragment instanceof BaseHivstRegisterFragment) {
                 String locationId = Context.getInstance().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
-                presenter().startForm(formName, entityId, metaData, locationId);
+                presenter().startForm(formName, entityId, metaData, locationId, GENDER);
             }
         } catch (Exception e) {
             Timber.e(e);

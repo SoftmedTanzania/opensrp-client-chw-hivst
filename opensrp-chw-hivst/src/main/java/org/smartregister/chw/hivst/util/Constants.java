@@ -42,6 +42,7 @@ public interface Constants {
         String FAMILY_BASE_ENTITY_ID = "FAMILY_BASE_ENTITY_ID";
         String ACTION = "ACTION";
         String HIVST_FORM_NAME = "HIVST_FORM_NAME";
+        String GENDER = "GENDER";
 
     }
 
