@@ -88,10 +88,25 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         } else if (Constants.EVENT_TYPE.HIVST_ISSUE_KITS.equals(encounter_type)) {
             encounter_type = Constants.TABLES.HIVST_FOLLOWUP;
             try {
-                boolean selfTestKitGiven = getFieldJSONObject(fields(jsonForm, STEP_ONE), "self_test_kit_given").getString("value").equalsIgnoreCase("yes");
-                boolean extraKits = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_required").getString("value").equalsIgnoreCase("yes");
-                if (selfTestKitGiven || extraKits) {
-                    createHivstResultRegistrationEvent(jsonForm, extraKits, entityId, allSharedPreferences);
+                boolean selfTestKitGiven = false;
+                boolean extraKits = false;
+                JSONObject selfTestKitGivenObj = getFieldJSONObject(fields(jsonForm, STEP_ONE), "self_test_kit_given");
+                JSONObject extraKitsGivenObj = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_required");
+                if (selfTestKitGivenObj != null) {
+                    boolean isVisible = selfTestKitGivenObj.getBoolean("is_visible");
+                    if (isVisible)
+                        selfTestKitGiven = selfTestKitGivenObj.getString("value").equalsIgnoreCase("yes");
+                }
+                if (extraKitsGivenObj != null) {
+                    boolean isVisible = extraKitsGivenObj.getBoolean("is_visible");
+                    if (isVisible)
+                        extraKits = extraKitsGivenObj.getString("value").equalsIgnoreCase("yes");
+                }
+                if (selfTestKitGiven) {
+                    createHivstResultRegistrationEvent(jsonForm, true, extraKits, entityId, allSharedPreferences);
+                }
+                if (extraKits) {
+                    createHivstResultRegistrationEvent(jsonForm, selfTestKitGiven, true, entityId, allSharedPreferences);
                 }
             } catch (Exception e) {
                 Timber.e(e);
@@ -102,9 +117,11 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
 
-    private static void createHivstResultRegistrationEvent(JSONObject jsonForm, boolean extraKits, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
-        String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
-        processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, "client");
+    private static void createHivstResultRegistrationEvent(JSONObject jsonForm, boolean clientKitGiven, boolean extraKits, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
+        if (clientKitGiven) {
+            String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
+            processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, "client");
+        }
         if (extraKits) {
             JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
             String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
@@ -112,9 +129,9 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
             for (int i = 0; i < vals.length(); i++) {
                 String kitFor = vals.get(i).toString();
-                if(kitFor.equalsIgnoreCase("sexual_partner")){
+                if (kitFor.equalsIgnoreCase("sexual_partner")) {
                     processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner");
-                }else if(kitFor.equalsIgnoreCase("peer_friend")){
+                } else if (kitFor.equalsIgnoreCase("peer_friend")) {
                     processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend");
                 }
             }

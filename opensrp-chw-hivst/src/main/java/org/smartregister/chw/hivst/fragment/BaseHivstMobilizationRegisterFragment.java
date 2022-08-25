@@ -59,10 +59,12 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
     }
 
     protected void showEmptyState() {
-        if (adapter.getItemCount() >= 1) {
-            emptyViewLayout.setVisibility(android.view.View.GONE);
-        } else {
-            emptyViewLayout.setVisibility(android.view.View.VISIBLE);
+        if(emptyViewLayout != null){
+            if (adapter.getItemCount() >= 1 ) {
+                emptyViewLayout.setVisibility(android.view.View.GONE);
+            } else {
+                emptyViewLayout.setVisibility(android.view.View.VISIBLE);
+            }
         }
     }
 
