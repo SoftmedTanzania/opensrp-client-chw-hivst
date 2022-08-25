@@ -28,6 +28,7 @@ public interface Constants {
         String HIVST_RECORD_RESULTS = "hivst_results";
         String HIVST_FOLLOW_UP_VISIT = "hivst_followup_visit";
         String HIVST_MOBILIZATION_SESSION = "hivst_mobilization_session";
+        String HIVST_REFERRAL_FORM = "referrals/hts_hivst_referral_form";
     }
 
     interface TABLES {

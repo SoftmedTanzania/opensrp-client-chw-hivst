@@ -59,5 +59,6 @@
     <string name="mobilization_session_participants">Participants: %s</string>
     <string name="mobilization_condoms_issued">Condoms Issued: %s</string>
     <string name="mobilziation_session_date">Date: %s</string>
+    <string name="refer_to_facility">Refer</string>
 
 </resources>
