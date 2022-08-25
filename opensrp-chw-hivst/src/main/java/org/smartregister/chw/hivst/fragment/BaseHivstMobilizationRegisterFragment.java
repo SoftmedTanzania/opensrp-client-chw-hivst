@@ -54,6 +54,7 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         if (hivstMobilizationModels != null && !hivstMobilizationModels.isEmpty()) {
             adapter = new HivstMobilizationRegisterAdapter(hivstMobilizationModels, requireActivity());
             clientsView.setAdapter(adapter);
+            showEmptyState();
         }
     }
 
@@ -108,7 +109,6 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         if (getSearchView() != null) {
             getSearchView().setVisibility(android.view.View.GONE);
         }
-        showEmptyState();
     }
 
 
@@ -143,10 +143,7 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
 
-        new android.os.Handler().postDelayed(() -> {
-            setUpAdapter();
-            showEmptyState();
-        }, 1000);
+        new android.os.Handler().postDelayed(this::setUpAdapter, 1000);
     }
 
     @Override
