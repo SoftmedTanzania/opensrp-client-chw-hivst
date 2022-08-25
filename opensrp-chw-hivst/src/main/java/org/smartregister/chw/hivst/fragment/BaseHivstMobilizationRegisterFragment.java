@@ -2,6 +2,7 @@ package org.smartregister.chw.hivst.fragment;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -35,7 +36,8 @@ import static org.smartregister.util.JsonFormUtils.generateRandomUUIDString;
 public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFragment {
 
     protected Toolbar toolbar;
-    private android.view.View view;
+    protected LinearLayout emptyViewLayout;
+    private HivstMobilizationRegisterAdapter adapter;
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
@@ -47,22 +49,31 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
 
     }
 
-    public void setUpAdapter(){
+    protected void setUpAdapter() {
         List<HivstMobilizationModel> hivstMobilizationModels = HivstMobilizationDao.getMobilizationSessions();
         if (hivstMobilizationModels != null && !hivstMobilizationModels.isEmpty()) {
-            clientsView.setAdapter(new HivstMobilizationRegisterAdapter(hivstMobilizationModels, requireActivity()));
+            adapter = new HivstMobilizationRegisterAdapter(hivstMobilizationModels, requireActivity());
+            clientsView.setAdapter(adapter);
+            showEmptyState();
         }
     }
 
-
+    protected void showEmptyState() {
+        if (adapter.getItemCount() >= 1) {
+            emptyViewLayout.setVisibility(android.view.View.GONE);
+        } else {
+            emptyViewLayout.setVisibility(android.view.View.VISIBLE);
+        }
+    }
 
     @Override
     public void setupViews(android.view.View view) {
         initializePresenter();
         super.setupViews(view);
-        this.view = view;
 
+        emptyViewLayout = view.findViewById(R.id.empty_view_ll);
         toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
+
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
@@ -133,6 +144,11 @@ public class BaseHivstMobilizationRegisterFragment extends BaseHivstRegisterFrag
         toolbar.setContentInsetStartWithNavigation(0);
 
         new android.os.Handler().postDelayed(this::setUpAdapter, 1000);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_mobilization_register;
     }
 
     @Override
