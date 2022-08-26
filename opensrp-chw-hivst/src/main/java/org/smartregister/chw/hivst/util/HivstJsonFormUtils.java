@@ -144,6 +144,8 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                 .withFieldCode("kit_for").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         baseEvent.addObs(new Obs().withFormSubmissionField("kit_code").withValue(kitCode)
                 .withFieldCode("kit_code").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
+        baseEvent.addObs(new Obs().withFormSubmissionField("result_reg_id").withValue(JsonFormUtils.generateRandomUUIDString())
+                .withFieldCode("result_reg_id").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
         try {
             HivstUtil.processEvent(allSharedPreferences, baseEvent);
         } catch (Exception e) {

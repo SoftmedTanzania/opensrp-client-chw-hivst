@@ -24,13 +24,16 @@ import org.smartregister.chw.hivst.HivstLibrary;
 import org.smartregister.chw.hivst.contract.BaseHivstCallDialogContract;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.hivst.R;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.sync.ClientProcessorForJava;
 import org.smartregister.sync.helper.ECSyncHelper;
+import org.smartregister.util.JsonFormUtils;
 import org.smartregister.util.PermissionUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.core.app.ActivityCompat;
@@ -127,7 +130,9 @@ public class HivstUtil {
         Event baseEvent = HivstJsonFormUtils.processJsonForm(allSharedPreferences, jsonString);
         if (baseEvent != null) {
             baseEvent.withBaseEntityId(baseEntityId);
-            baseEvent.withFormSubmissionId(entityId);
+            baseEvent.withFormSubmissionId(JsonFormUtils.generateRandomUUIDString());
+            baseEvent.addObs(new Obs().withFormSubmissionField("result_reg_id").withValue(entityId)
+                    .withFieldCode("result_reg_id").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
             HivstUtil.processEvent(allSharedPreferences, baseEvent);
         }
     }
