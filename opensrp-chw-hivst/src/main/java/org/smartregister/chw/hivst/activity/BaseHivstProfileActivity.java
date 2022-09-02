@@ -27,6 +27,7 @@ import org.smartregister.chw.hivst.custom_views.BaseHivstFloatingMenu;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.hivst.domain.MemberObject;
 import org.smartregister.chw.hivst.interactor.BaseHivstProfileInteractor;
+import org.smartregister.chw.hivst.listener.OnClickFloatingMenu;
 import org.smartregister.chw.hivst.presenter.BaseHivstProfilePresenter;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.chw.hivst.util.HivstUtil;
@@ -205,14 +206,39 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
     }
 
     public void initializeFloatingMenu() {
-        if (StringUtils.isNotBlank(memberObject.getPhoneNumber())) {
-            baseHivstFloatingMenu = new BaseHivstFloatingMenu(this, memberObject);
-            baseHivstFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
-            LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT);
-            addContentView(baseHivstFloatingMenu, linearLayoutParams);
-        }
+        baseHivstFloatingMenu = new BaseHivstFloatingMenu(this, memberObject);
+        checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
+        showReferralView();
+        OnClickFloatingMenu onClickFloatingMenu = viewId -> {
+            if (viewId == R.id.hivst_fab) {//Animates the actual FAB
+                baseHivstFloatingMenu.animateFAB();
+            } else if (viewId == R.id.call_layout) {
+                baseHivstFloatingMenu.launchCallWidget();
+                baseHivstFloatingMenu.animateFAB();
+            } else if (viewId == R.id.refer_to_facility_layout) {
+                startReferralForm();
+            } else {
+                Timber.d("Unknown FAB action");
+            }
+        };
+
+        baseHivstFloatingMenu.setFloatMenuClickListener(onClickFloatingMenu);
+        baseHivstFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.END);
+        LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        addContentView(baseHivstFloatingMenu, linearLayoutParams);
+    }
+
+    public void startReferralForm() {
+        //implement in chw
+    }
+
+    public void showReferralView(){
+        baseHivstFloatingMenu.findViewById(R.id.refer_to_facility_layout).setVisibility(View.VISIBLE);
+    }
+
+    private void checkPhoneNumberProvided(boolean hasPhoneNumber) {
+        BaseHivstFloatingMenu.redrawWithOption(baseHivstFloatingMenu, hasPhoneNumber);
     }
 
     @Override
