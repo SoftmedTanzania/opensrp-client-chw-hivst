@@ -68,5 +68,13 @@
     <string name="mobilization_condoms_issued">Condoms Issued: %s</string>
     <string name="mobilziation_session_date">Date: %s</string>
     <string name="refer_to_facility">Refer</string>
+    <string name="kit_for_client">Client</string>
+    <string name="kit_for_peer_friend">Peer Friend</string>
+    <string name="kit_for_sexual_partner">Sexual Partner</string>
+    <string name="hivst_result_reactive">Reactive</string>
+    <string name="hivst_result_non_reactive">Non-reactive</string>
+    <string name="hivst_result_invalid">invalid</string>
+    <string name="hivst_result_wastage">Wastage</string>
+    <string name="hivst_result_not_returned">Results not returned</string>
 
 </resources>

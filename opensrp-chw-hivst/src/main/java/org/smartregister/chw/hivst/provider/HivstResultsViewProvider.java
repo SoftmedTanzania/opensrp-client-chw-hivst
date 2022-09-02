@@ -69,7 +69,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
                 viewHolder.hivstWrapper.setVisibility(View.GONE);
                 viewHolder.recordHivstResult.setVisibility(View.VISIBLE);
             } else {
-                viewHolder.hivstResult.setText(hivstResult);
+                viewHolder.hivstResult.setText(context.getString(context.getResources().getIdentifier("hivst_result_" + hivstResult, "string", context.getPackageName())));
                 viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
                 viewHolder.recordHivstResult.setVisibility(View.GONE);
             }
@@ -81,7 +81,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
             }
 
             viewHolder.kitCode.setText(kitCode);
-            viewHolder.kitFor.setText(kitFor);
+            viewHolder.kitFor.setText(context.getString(context.getResources().getIdentifier("kit_for_" + kitFor, "string", context.getPackageName())));
             viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHivstResult.setTag(pc);
             viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
