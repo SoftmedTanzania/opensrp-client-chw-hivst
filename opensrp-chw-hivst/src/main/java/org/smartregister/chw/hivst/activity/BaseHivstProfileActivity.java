@@ -149,11 +149,11 @@ public class BaseHivstProfileActivity extends BaseProfileActivity implements Hiv
         initializePresenter();
         profilePresenter.fillProfileData(memberObject);
         setupViews();
+        initializeFloatingMenu();
     }
 
     @Override
     protected void setupViews() {
-        initializeFloatingMenu();
         recordAnc(memberObject);
         recordPnc(memberObject);
         profilePresenter.showResultHistory(memberObject.getBaseEntityId());
