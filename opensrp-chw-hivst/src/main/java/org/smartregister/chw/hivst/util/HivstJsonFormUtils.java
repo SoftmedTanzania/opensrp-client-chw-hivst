@@ -103,10 +103,10 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
                         extraKits = extraKitsGivenObj.getString("value").equalsIgnoreCase("yes");
                 }
                 if (selfTestKitGiven) {
-                    createHivstResultRegistrationEvent(jsonForm, true, extraKits, entityId, allSharedPreferences);
+                    createHivstResultRegistratioEventForClient(jsonForm, entityId, allSharedPreferences);
                 }
                 if (extraKits) {
-                    createHivstResultRegistrationEvent(jsonForm, selfTestKitGiven, true, entityId, allSharedPreferences);
+                    createHivstResultRegistrationEventForExtraKits(jsonForm, entityId, allSharedPreferences);
                 }
             } catch (Exception e) {
                 Timber.e(e);
@@ -117,25 +117,25 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
 
-    private static void createHivstResultRegistrationEvent(JSONObject jsonForm, boolean clientKitGiven, boolean extraKits, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
-        if (clientKitGiven) {
-            String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
-            processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, "client");
-        }
-        if (extraKits) {
-            JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
-            String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
-            String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
+    private static void createHivstResultRegistratioEventForClient(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) {
+        String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
+        processRegistrationResultForClient(entityId, allSharedPreferences, kitCode, "client");
+    }
 
-            for (int i = 0; i < vals.length(); i++) {
-                String kitFor = vals.get(i).toString();
-                if (kitFor.equalsIgnoreCase("sexual_partner")) {
-                    processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner");
-                } else if (kitFor.equalsIgnoreCase("peer_friend")) {
-                    processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend");
-                }
+    private static void createHivstResultRegistrationEventForExtraKits(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) throws Exception {
+        JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
+        String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
+        String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
+
+        for (int i = 0; i < vals.length(); i++) {
+            String kitFor = vals.get(i).toString();
+            if (kitFor.equalsIgnoreCase("sexual_partner")) {
+                processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPartner, "sexual_partner");
+            } else if (kitFor.equalsIgnoreCase("peer_friend")) {
+                processRegistrationResultForClient(entityId, allSharedPreferences, kitCodeForPeer, "peer_friend");
             }
         }
+
     }
 
     private static void processRegistrationResultForClient(String entityId, AllSharedPreferences allSharedPreferences, String kitCode, String kitFor) {
