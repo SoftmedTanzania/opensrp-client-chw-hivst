@@ -43,6 +43,7 @@
     <string name="call_anc_client">ANC Client</string>
     <string name="call_pnc_client">PNC Client</string>
     <string name="call_head_of_family">Call Head of Family</string>
+    <string name="self_testing_client">HIVST Client</string>
     <string name="view_malaria_test_result">View malaria test results</string>
     <string name="malaria_positive">Malaria positive</string>
     <string name="anc_string">ANC</string>

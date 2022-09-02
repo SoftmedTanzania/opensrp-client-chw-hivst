@@ -69,7 +69,7 @@ public class BaseHivstCallDialogFragment extends DialogFragment implements BaseH
     private void setCallTitle(ViewGroup rootView, int viewId, final String message) {
         TextView callTitle = rootView.findViewById(viewId);
         if (MEMBER_OBJECT.getBaseEntityId().equals(MEMBER_OBJECT.getFamilyHead())) {
-            callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.call_family_head)));
+            callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.self_testing_client)));
         } else if ("0".equals(MEMBER_OBJECT.getAncMember())) {
             callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.call_anc_client)));
         } else if (MEMBER_OBJECT.getBaseEntityId().equals(MEMBER_OBJECT.getPrimaryCareGiver())) {
