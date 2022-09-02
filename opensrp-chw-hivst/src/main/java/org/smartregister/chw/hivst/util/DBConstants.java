@@ -26,5 +26,6 @@ public class DBConstants {
         public static final String MALE_CLIENTS_REACHED = "male_clients_reached";
         public static final String MALE_CONDOMS_ISSUED = "male_condoms_issued";
         public static final String FEMALE_CONDOMS_ISSUED = "female_condoms_issued";
+        public static final String COLLECTION_DATE = "collection_date";
     }
 }

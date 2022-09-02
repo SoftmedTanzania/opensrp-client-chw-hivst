@@ -61,7 +61,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
         try {
 
             String kitCode = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_CODE, false);
-            //String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HVL_SAMPLE_COLLECTION_DATE, false);
+            String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.COLLECTION_DATE, false);
             String kitFor = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_FOR, false);
             String hivstResult = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.HIVST_RESULT, false);
 
@@ -82,6 +82,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
 
             viewHolder.kitCode.setText(kitCode);
             viewHolder.kitFor.setText(kitFor);
+            viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHivstResult.setTag(pc);
             viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHivstResult.setOnClickListener(onClickListener);
