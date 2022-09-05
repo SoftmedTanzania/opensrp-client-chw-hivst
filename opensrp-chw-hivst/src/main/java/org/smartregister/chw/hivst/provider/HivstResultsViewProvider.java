@@ -27,6 +27,8 @@ import org.smartregister.view.dialog.SortOption;
 import org.smartregister.view.viewholder.OnClickFormLauncher;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -59,7 +61,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
     @SuppressLint("SetTextI18n")
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
-
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
             String kitCode = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_CODE, false);
             String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.COLLECTION_DATE, false);
             String kitFor = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.KIT_FOR, false);
@@ -82,7 +84,7 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
 
             viewHolder.kitCode.setText(kitCode);
             viewHolder.kitFor.setText(context.getString(context.getResources().getIdentifier("kit_for_" + kitFor, "string", context.getPackageName())));
-            viewHolder.collectionDate.setText(collectionDate);
+            viewHolder.collectionDate.setText(df.format(Long.parseLong(collectionDate)));
             viewHolder.recordHivstResult.setTag(pc);
             viewHolder.recordHivstResult.setTag(R.id.VIEW_ID, BaseHivstResultViewFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHivstResult.setOnClickListener(onClickListener);
