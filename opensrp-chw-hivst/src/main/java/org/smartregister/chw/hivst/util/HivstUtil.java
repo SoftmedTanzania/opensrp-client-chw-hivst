@@ -127,7 +127,7 @@ public class HivstUtil {
 
     public static void saveFormEvent(final String jsonString, String baseEntityId, String entityId) throws Exception {
         AllSharedPreferences allSharedPreferences = HivstLibrary.getInstance().context().allSharedPreferences();
-        Event baseEvent = HivstJsonFormUtils.processJsonForm(allSharedPreferences, jsonString);
+        Event baseEvent = HivstJsonFormUtils.processJsonForm(allSharedPreferences, jsonString, baseEntityId);
         if (baseEvent != null) {
             baseEvent.withBaseEntityId(baseEntityId);
             baseEvent.withFormSubmissionId(JsonFormUtils.generateRandomUUIDString());
