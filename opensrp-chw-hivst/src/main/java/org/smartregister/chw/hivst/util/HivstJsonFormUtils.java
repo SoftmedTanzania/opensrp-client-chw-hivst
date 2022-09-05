@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
+import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -171,7 +172,8 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
     private static void createHivstResultRegistratioEventForClient(JSONObject jsonForm, String entityId, AllSharedPreferences allSharedPreferences) {
         String kitCode = getFieldJSONObject(fields(jsonForm, STEP_ONE), "kit_code").optString("value", "");
-        String collectionDate = getFieldJSONObject(fields(jsonForm, STEP_ONE), "collection_date").optString("value", "");
+        DateTime now = new DateTime();
+        String collectionDate = String.valueOf(now.getMillis());
         processRegistrationResult(entityId, allSharedPreferences, kitCode, "client", collectionDate);
     }
 
@@ -180,7 +182,8 @@ public class HivstJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         JSONArray vals = getFieldJSONObject(fields(jsonForm, STEP_ONE), "extra_kits_issued_for").getJSONArray("value");
         String kitCodeForPartner = getFieldJSONObject(fields(jsonForm, STEP_ONE), "sexual_partner_kit_code").optString("value", "");
         String kitCodeForPeer = getFieldJSONObject(fields(jsonForm, STEP_ONE), "peer_friend_kit_code").optString("value", "");
-        String collectionDate = getFieldJSONObject(fields(jsonForm, STEP_ONE), "collection_date").optString("value", "");
+        DateTime now = new DateTime();
+        String collectionDate = String.valueOf(now.getMillis());
 
         for (int i = 0; i < vals.length(); i++) {
             String kitFor = vals.get(i).toString();
