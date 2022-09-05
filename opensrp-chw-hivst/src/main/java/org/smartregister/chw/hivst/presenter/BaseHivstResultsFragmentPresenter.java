@@ -36,7 +36,7 @@ public class BaseHivstResultsFragmentPresenter implements HivstResultsFragmentCo
 
     @Override
     public String getDefaultSortQuery() {
-        return "";
+        return Constants.TABLES.HIVST_RESULTS + "." + DBConstants.KEY.COLLECTION_DATE + " DESC ";
     }
 
     @Override
