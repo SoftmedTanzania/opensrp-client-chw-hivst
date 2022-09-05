@@ -45,7 +45,6 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
     public String mainSelect(@NonNull String tableName, @NonNull String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
         queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName), DBConstants.KEY.BASE_ENTITY_ID);
-        queryBuilder.customJoin("INNER JOIN " + Constants.TABLES.HIVST_FOLLOWUP + " ON  " + tableName + "." + DBConstants.KEY.ENTITY_ID + " = " + Constants.TABLES.HIVST_FOLLOWUP + "." + DBConstants.KEY.ENTITY_ID + " COLLATE NOCASE ");
         return queryBuilder.mainCondition(mainCondition);
     }
 
@@ -57,7 +56,7 @@ public class BaseHivstResultsFragmentModel implements HivstResultsFragmentContra
         columnList.add(tableName + "." + DBConstants.KEY.KIT_CODE);
         columnList.add(tableName + "." + DBConstants.KEY.KIT_FOR);
         columnList.add(tableName  + "." + DBConstants.KEY.HIVST_RESULT);
-        columnList.add(Constants.TABLES.HIVST_FOLLOWUP + "." + DBConstants.KEY.COLLECTION_DATE);
+        columnList.add(tableName + "." + DBConstants.KEY.COLLECTION_DATE);
 
         return columnList.toArray(new String[columnList.size()]);
 
