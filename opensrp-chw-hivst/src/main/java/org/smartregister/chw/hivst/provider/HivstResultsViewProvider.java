@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hivst.fragment.BaseHivstResultViewFragment;
 import org.smartregister.chw.hivst.util.DBConstants;
@@ -31,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Set;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResultsViewProvider.RegisterViewHolder> {
@@ -71,7 +70,13 @@ public class HivstResultsViewProvider implements RecyclerViewProvider<HivstResul
                 viewHolder.hivstWrapper.setVisibility(View.GONE);
                 viewHolder.recordHivstResult.setVisibility(View.VISIBLE);
             } else {
-                viewHolder.hivstResult.setText(context.getString(context.getResources().getIdentifier("hivst_result_" + hivstResult, "string", context.getPackageName())));
+                int resVal = context.getResources().getIdentifier("hivst_result_" + hivstResult, "string", context.getPackageName());
+                if (resVal != 0) {
+                    viewHolder.hivstResult.setText(context.getString(resVal));
+                } else {
+                    viewHolder.hivstResult.setText(hivstResult);
+                }
+
                 viewHolder.hivstWrapper.setVisibility(View.VISIBLE);
                 viewHolder.recordHivstResult.setVisibility(View.GONE);
             }
